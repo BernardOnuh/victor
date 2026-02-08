@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
 
 // Deterministic pseudo-random based on seed to avoid hydration mismatch
 function seededRandom(seed: number) {
@@ -12,12 +13,12 @@ const noMessages = [
   "Babe just click yes 😤💅",
   "You're actually unserious rn 🙄",
   "Bestie the yes button is BEGGING you 😩",
-  "Khadijah doesn't accept rejection 💀",
+  "Ajokemi doesn't accept rejection 💀",
   "This is giving delulu... just say yes 🤡",
   "Your finger is literally hovering over yes rn 👀",
   "Even your phone wants you to click yes 📱💕",
-  "SubhanAllah, just say yes already 🙏",
-  "Allah made you for each other... click yes 🤲",
+  "God when?? RIGHT NOW if you click yes 🙏",
+  "The ancestors are watching... click yes 👁️",
   "Plot twist: you already said yes in your heart 💖",
 ];
 
@@ -36,11 +37,10 @@ export default function Valentine() {
   const sparkleId = useRef(0);
 
   const fullQuote =
-    "And among His signs is that He created for you mates from among yourselves, that you may dwell in tranquility with them, and He has put love and mercy between your hearts. — Quran 30:21 🤲💕";
+    "Every love story is beautiful, but ours is my favorite. From this moment on, I choose you — to laugh with, to dream with, and to build something beautiful together. 💕";
 
   useEffect(() => {
-    // Maher Zain - Baraka Allahu Lakuma (romantic Islamic nasheed)
-    audioRef.current = new Audio("https://ia600605.us.archive.org/18/items/MaherZainBarakaAllahu/Maher%20Zain%20-%20Baraka%20Allahu%20Lakuma.mp3");
+    audioRef.current = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
     audioRef.current.loop = true;
   }, []);
 
@@ -69,7 +69,7 @@ export default function Valentine() {
   );
 
   const spawnConfetti = () => {
-    const colors = ["#ff6b8a", "#ff85a1", "#ffc2d1", "#fff0f3", "#C4A265", "#2D6A4F", "#a855f7", "#D4AF37"];
+    const colors = ["#ff6b8a", "#ff85a1", "#ffc2d1", "#fff0f3", "#ffdd00", "#ff6f61", "#a855f7", "#3b82f6"];
     const pieces = Array.from({ length: 60 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
@@ -125,7 +125,7 @@ export default function Valentine() {
   // 🎉 Accepted screen
   if (stage === "accepted") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-emerald-950 flex flex-col items-center justify-center overflow-hidden relative px-4">
+      <div className="min-h-screen bg-gradient-to-br from-pink-400 via-red-500 to-rose-600 flex flex-col items-center justify-center overflow-hidden relative px-4">
         {/* Confetti */}
         {confetti.map((piece) => (
           <div
@@ -150,31 +150,23 @@ export default function Valentine() {
               animationDuration: `${3 + seededRandom(i + 300) * 4}s`,
             }}
           >
-            {["🌙", "💕", "⭐", "💖", "🤲", "🌹", "✨", "☪️"][i % 8]}
+            {["❤️", "💕", "💖", "💗", "💘", "🌹", "✨", "🦋"][i % 8]}
           </span>
         ))}
 
-        {/* Background video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-15"
-          src="/rokeeb-bg.mp4"
+          className="absolute inset-0 w-full h-full object-cover opacity-20"
+          src="/valentine-bg.mp4"
         />
 
         <div className="relative z-10 flex flex-col items-center">
           <div className="animate-bounce mb-6">
-            <div className="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-amber-400 shadow-2xl ring-4 ring-emerald-400/50 pulse-glow">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="object-cover w-full h-full"
-                src="/khadijah.mp4"
-              />
+            <div className="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white shadow-2xl ring-4 ring-pink-300/50 pulse-glow">
+              <Image src="/ajokemi.jpg" alt="Ajokemi" width={192} height={192} className="object-cover w-full h-full" />
             </div>
           </div>
 
@@ -186,14 +178,13 @@ export default function Valentine() {
           </h1>
 
           <p
-            className="text-2xl md:text-4xl text-amber-200/90 text-center mb-6 animate-slide-up"
+            className="text-2xl md:text-4xl text-white/90 text-center mb-6 animate-slide-up"
             style={{ fontFamily: "var(--font-dancing)", animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}
           >
-            Rokeeb got himself a Valentine! 💕
+            Ajokemi got herself a Valentine! 💕
           </p>
 
-          <div className="max-w-lg mx-auto bg-emerald-800/30 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-amber-400/30 shadow-xl mb-6 animate-slide-up" style={{ animationDelay: "0.4s", opacity: 0, animationFillMode: "forwards" }}>
-            <p className="text-amber-300/80 text-sm text-center mb-2">☪️ From the Holy Quran</p>
+          <div className="max-w-lg mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 shadow-xl mb-6 animate-slide-up" style={{ animationDelay: "0.4s", opacity: 0, animationFillMode: "forwards" }}>
             <p
               className={`text-xl md:text-2xl text-white text-center leading-relaxed ${showQuote && typedText.length < fullQuote.length ? "typewriter-cursor" : ""}`}
               style={{ fontFamily: "var(--font-dancing)" }}
@@ -203,14 +194,14 @@ export default function Valentine() {
           </div>
 
           <p
-            className="text-lg md:text-xl text-amber-200 text-center animate-slide-up"
+            className="text-lg md:text-xl text-pink-100 text-center animate-slide-up"
             style={{ fontFamily: "var(--font-pacifico)", animationDelay: "0.6s", opacity: 0, animationFillMode: "forwards" }}
           >
-            Happy Valentine&apos;s Day 🌙❤️
+            Happy Valentine&apos;s Day ❤️
           </p>
 
-          <p className="text-white/50 text-sm mt-6 text-center">
-            🎵 Playing Baraka Allahu Lakuma...
+          <p className="text-white/60 text-sm mt-6 text-center">
+            🎵 Playing your song...
           </p>
         </div>
       </div>
@@ -220,7 +211,7 @@ export default function Valentine() {
   // 🤔 Confirmation screen
   if (stage === "confirm") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-800 via-teal-800 to-emerald-900 flex flex-col items-center justify-center p-4 overflow-hidden relative">
+      <div className="min-h-screen bg-gradient-to-br from-rose-400 via-pink-500 to-fuchsia-600 flex flex-col items-center justify-center p-4 overflow-hidden relative">
         <div className="absolute inset-0 animate-shimmer" />
         {Array.from({ length: 8 }).map((_, i) => (
           <span
@@ -232,19 +223,12 @@ export default function Valentine() {
               animationDuration: `${4 + seededRandom(i + 600) * 6}s`,
             }}
           >
-            🌙
+            💭
           </span>
         ))}
         <div className="relative z-10 flex flex-col items-center">
-          <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-amber-400/80 shadow-xl mb-6 pulse-glow">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="object-cover w-full h-full"
-              src="/khadijah.mp4"
-            />
+          <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-white/80 shadow-xl mb-6 pulse-glow">
+            <Image src="/ajokemi.jpg" alt="Ajokemi" width={144} height={144} className="object-cover w-full h-full" />
           </div>
           <div className="text-5xl mb-4 animate-heartbeat">🤔</div>
           <h2
@@ -254,15 +238,15 @@ export default function Valentine() {
             Wait fr fr? 👀
           </h2>
           <p
-            className="text-xl md:text-2xl text-amber-200/90 mb-10 text-center animate-slide-up"
+            className="text-xl md:text-2xl text-white/90 mb-10 text-center animate-slide-up"
             style={{ fontFamily: "var(--font-dancing)", animationDelay: "0.2s", opacity: 0, animationFillMode: "forwards" }}
           >
-            You sure you wanna be Rokeeb&apos;s Valentine? 💘
+            You sure you wanna be Ajokemi&apos;s Valentine? 💘
           </p>
           <div className="flex items-center gap-6">
             <button
               onClick={handleConfirmYes}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl active:scale-95 px-10 py-4 text-xl cursor-pointer transition-all hover:scale-105"
+              className="bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl active:scale-95 px-10 py-4 text-xl cursor-pointer transition-all hover:scale-105"
               style={{ fontFamily: "var(--font-dancing)" }}
             >
               Yes I&apos;m sure! 💖
@@ -296,11 +280,11 @@ export default function Valentine() {
         </div>
       ))}
 
-      {/* Rich layered background - emerald/Islamic green tones */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-800 to-emerald-950" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(196,162,101,0.15),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(16,185,129,0.2),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(212,175,55,0.1),transparent_50%)]" />
+      {/* Rich layered background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-rose-500 via-pink-600 to-fuchsia-700" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(255,200,200,0.3),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,100,150,0.3),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(200,50,100,0.2),transparent_50%)]" />
       <div className="absolute inset-0 animate-shimmer" />
 
       {Array.from({ length: 15 }).map((_, i) => (
@@ -313,43 +297,35 @@ export default function Valentine() {
             animationDuration: `${4 + seededRandom(i + 900) * 6}s`,
           }}
         >
-          {["🌙", "🌹", "💕", "⭐", "☪️"][i % 5]}
+          {["❤️", "🌹", "💕", "✨", "🦋"][i % 5]}
         </span>
       ))}
 
       <div className="relative z-10 flex flex-col items-center">
-        {/* GIF/Video in circle */}
-        <div className="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-amber-400 shadow-2xl mb-6 hover:scale-105 transition-transform ring-4 ring-emerald-400/50 pulse-glow">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="object-cover w-full h-full"
-            src="/khadijah.mp4"
-          />
+        <div className="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-white shadow-2xl mb-6 hover:scale-105 transition-transform ring-4 ring-pink-300/50 pulse-glow">
+          <Image src="/ajokemi.jpg" alt="Ajokemi" width={192} height={192} className="object-cover w-full h-full" />
         </div>
 
-        <div className="text-6xl mb-4 animate-heartbeat">🌙💌</div>
+        <div className="text-6xl mb-4 animate-heartbeat">💌</div>
 
         <h1
           className="text-4xl md:text-7xl text-white mb-3 text-center drop-shadow-lg"
           style={{ fontFamily: "var(--font-great-vibes)" }}
         >
-          Hey Khadijah...
+          Hey you...
         </h1>
 
         <p
-          className="text-xl md:text-3xl text-amber-200/90 mb-12 text-center"
+          className="text-xl md:text-3xl text-white/90 mb-12 text-center"
           style={{ fontFamily: "var(--font-dancing)" }}
         >
-          Will you be Rokeeb&apos;s Valentine? 🌹💕
+          Will you be Ajokemi&apos;s Valentine? 💕
         </p>
 
         <div className="flex items-center gap-6 flex-wrap justify-center">
           <button
             onClick={handleYes}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl active:scale-95 px-8 py-4 cursor-pointer transition-all"
+            className="bg-pink-600 hover:bg-pink-700 text-white font-bold rounded-full shadow-lg hover:shadow-xl active:scale-95 px-8 py-4 cursor-pointer transition-all"
             style={{
               transform: `scale(${yesSize})`,
               transition: "transform 0.3s ease",
@@ -377,7 +353,7 @@ export default function Valentine() {
         {getSassMessage() && (
           <p
             key={noCount}
-            className="text-amber-200/90 mt-8 text-lg md:text-xl text-center animate-slide-up"
+            className="text-white/90 mt-8 text-lg md:text-xl text-center animate-slide-up"
             style={{ fontFamily: "var(--font-dancing)" }}
           >
             {getSassMessage()}
@@ -386,7 +362,7 @@ export default function Valentine() {
 
         {noCount >= 7 && (
           <p
-            className="text-emerald-300/80 text-sm mt-4 text-center animate-pulse"
+            className="text-pink-200 text-sm mt-4 text-center animate-pulse"
             style={{ fontFamily: "var(--font-pacifico)" }}
           >
             The No button is literally disappearing... take the hint bestie 👋
